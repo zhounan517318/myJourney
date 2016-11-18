@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.container{
+			width: 600px;
+			height: 400px;
+			margin: 40px auto;
+			perspective: 800px;
+			transform-style: preserve-3d;
+			cursor:pointer;
+			border:2px solid #f3f2f1;
+			border-radius:2px;
+			
+		}
+
+		.block{
+			width: 100px;
+			height: 100px;
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		
+	</div>
+	<script>
+		var oContainer = document.querySelector('.container');
+
+		var cols = 6;
+		var rows = 4;	
+
+		var bReady = true;
+        var timer=null;
+		var currentIndex = 0;
+<!--背后一层背景图-->
+		oContainer.style.backgroundImage = `url(img/x${currentIndex+1}.jpg)`	
+<!--每一张小图布局-->
+		for( var row = 0; row < rows;row++ ){
+			for( var col = 0; col < cols;col++ ){
+				var oDiv = document.createElement('div');
+					oDiv.classList.add('block');
+
+				oDiv.dataset.col = col;
+				oDiv.dataset.row = row;
+
+				oDiv.style.backgroundImage = `url(img/x${currentIndex}.jpg)`;
+
+				oDiv.style.backgroundPosition = `${-col*100}px ${-row*100}px`
+
+				oContainer.appendChild(oDiv);
+			}
+		}
+
+		var aDiv = document.querySelectorAll('.block');
+
+		oContainer.onmouseover = function(){
+<!--做开关，解决连续点击的bug-->
+			if( !bReady ) return;
+
+			bReady = false;
+
+			aDiv.forEach(function(oDiv,index){
+
+				var row = oDiv.dataset.row;
+				var col = oDiv.dataset.col;
+<!--爆炸的效果，每张随机延迟弹出-->
+				oDiv.style.transition= `0.5s ${rnd(0,200)}ms`;
+<!--水平和垂直位移，因为从中间开始，所以translateX/y分别col和row减去一般长度-->
+<!--rotate角度随机弹出-->
+				oDiv.style.transform = `translateX(${20*(col-3)}px) translateY(${20*(row-2)}px) translateZ(600px) rotateX(${rnd(0,180)}deg) rotateY(${rnd(0,180)}deg)`
+				oDiv.style.opacity = 0;
+			})
+
+			timer=setTimeout(function(){
+				
+<!--进行第二点击，替换原图-->
+                currentIndex++;
+				oContainer.style.backgroundImage = `url(img/x${(currentIndex+1)%3}.jpg)`	
+
+				aDiv.forEach(function(oDiv,index){
+<!--清除粘稠效果，进行变换清除-->
+					oDiv.style.transition = '';
+					oDiv.style.transform = '';
+					oDiv.style.opacity = 1;
+					oDiv.style.backgroundImage = `url(img/x${currentIndex%3}.jpg)`;
+				})
+
+				bReady = true;
+			},500)
+		}
+    
+		function rnd(n,m){
+			return parseInt(Math.random()*(m-n)+n)
+		}
+
+
+	</script>
+</body>
+</html>
+
+
+

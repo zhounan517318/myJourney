@@ -1,0 +1,115 @@
+@font-face {
+	font-weight: normal;
+	font-style: normal;
+	font-family: 'codropsicons';
+	src:url('../fonts/codropsicons/codropsicons.eot');
+	src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/codropsicons/codropsicons.woff') format('woff'),
+		url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
+		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+}
+
+*, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
+.clearfix:before, .clearfix:after { content: ''; display: table; }
+.clearfix:after { clear: both; }
+
+body {
+	background:url(../img/bg-tile.png) no-repeat;
+	color: #383a3c;
+	font-weight: 400;
+	font-size: 1em;
+	line-height: 1.25;
+	font-family: 'Raleway', Calibri, Arial, sans-serif;
+}
+
+a, button {
+	outline: none;
+}
+
+a {
+	color: #566473;
+	text-decoration: none;
+}
+
+a:hover, a:focus {
+	color: #34495e;
+}
+
+
+p.ref {
+	text-align: center;
+	padding: 2em 1em;
+}
+
+/* Header */
+/*<!--.codrops-header {
+	margin: 0 auto;
+	padding: 2em;
+	text-align: center;
+	max-width: 900px;
+}
+
+.codrops-header h1 {
+	margin: 0;
+	font-size: 4.5em;
+	line-height: 1;
+	font-weight: 200;
+}
+
+.codrops-header h1 span {
+	display: block;
+	padding: 1em 0 1.5em;
+	font-size: 36%;
+	color: #95a5a6;
+	line-height: 1.4;
+}
+
+.content{position:relative;}-->*/
+/*//.arrow-down{width:57px;height:80px;
+//      display:block;
+//       position:absolute;left:50%;
+//      margin-left:-50px;
+//      top:86%;z-index:100;
+//      background-image:url(../img/arrow2.png);
+//      }
+*/
+
+<!--introduce-->
+
+section{margin-top:100px;position:relative;}
+.site-inner {
+  position: relative;
+  width: 58.75em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.site-inner-abs {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 58.75em;
+  margin-left: -29.375em;
+}
+
+
+<!--nav-->
+.nav{height:65px;background:#f3f1f2;margin:0 auto;position:relative;width:100%;min-width:1200px;}
+.logo_box{width:340px;position:absolute;top:0;left:0;}
+.logo{background-image:url(../img/logo.jpg);width:44px;height:50px;
+       margin-top:10px;margin-left:20px;margin-right:10px;}
+.nav .logdoc{font:18px bold;line-height:65px;height:65px;}	   
+
+
+
+.navbox{margin-right:20px;overflow:hidden;height:65px;z-index:2;margin-bottom:3px;}
+.navbox li{float:left;height:65px;padding:12px 0;width:120px;}
+.navbox li a{display:block;font-size:14px;text-align:center;margin-bottom:6px;}
+.navbox .active{background:#63c6ae;border-bottom:2px solid #666;}
+
+@media screen and (max-width: 40em) {
+
+	.codrops-header h1 {
+		font-size: 2.5em;
+	}
+}
